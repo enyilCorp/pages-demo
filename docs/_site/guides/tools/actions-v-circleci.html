@@ -1,0 +1,387 @@
+<!DOCTYPE html><!--[if lt IE 7 ]> <html lang="en-US" class="ie6"> <![endif]--><!--[if IE 7 ]> <html lang="en-US" class="ie7"> <![endif]--><!--[if IE 8 ]> <html lang="en-US" class="ie8"> <![endif]--><!--[if IE 9 ]> <html lang="en-US" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--><html lang="en-US"><!--<![endif]-->
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="GitHub Handbook" property="og:site_name">
+<meta content="website" property="og:type">
+
+<!-- Twitter Card -->
+<meta name="twitter:site" content="">
+<!-- description, title tags added below-->
+<meta name="twitter:image:src" content="http://localhost:4000/pages-demo/assets/img/logo/og-twitter-image.jpg' | relative_url }}">
+
+<meta name="twitter:card" content="summary">
+
+<!-- end Twitter Card -->
+
+<!-- Title -->
+
+<title>GitHub Handbook | GitHub Actions and CircleCI tool comparison</title>
+<meta property="og:title" content="GitHub Handbook | GitHub Actions and CircleCI tool comparison" />
+<meta name="twitter:title" content="GitHub Handbook | GitHub Actions and CircleCI tool comparison">
+
+
+<!-- Description -->
+
+<meta name="description" content="You can find a range of tools to support the CI/CD process. GitHub Actions and CircleCI share several similarities in configuration, which makes migration to GitHub Actions relatively straightforward.">
+<meta property="og:description" content="You can find a range of tools to support the CI/CD process. GitHub Actions and CircleCI share several similarities in configuration, which makes migration to GitHub Actions relatively straightforward." />
+<meta property="twitter:description" content="You can find a range of tools to support the CI/CD process. GitHub Actions and CircleCI share several similarities in configuration, which makes migration to GitHub Actions relatively straightforward." />
+
+
+<!-- Image -->
+<link rel="image_src" href="">
+<meta name="image" content="">
+<meta property="og:image" content="" />
+
+<!--link rel="canonical" href="https://enyil.github.io/pages-demo/guides/tools/actions-v-circleci"-->
+
+<!-- Icons -->
+<link href="/pages-demo/assets/img/logo/apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-152x152.png" rel="apple-touch-icon-precomposed" sizes="144x144">
+
+<link rel="shortcut icon" href="/pages-demo/assets/img/logo/favicon.ico">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-16x16.png">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-96x96.png">
+
+<meta name="msapplication-TileImage" content="/pages-demo/assets/img/logo/apple-touch-icon-114x114.png">
+<meta name="msapplication-TileColor" content="#2b5797">
+
+<link rel="manifest" href="/pages-demo/manifest.json">
+<link rel="mask-icon" href="/pages-demo/assets/img/logo/safari-pinned-tab.svg" color="#2b5797"><!--red e21c3d-->
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="stylesheet" href="http://localhost:4000/pages-demo/assets/css/style.css">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+</head>
+
+<body class="layout-page page-github-actions-and-circleci-tool-comparison site-lang-">
+
+  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+
+  <!--
+<div class="usa-banner hide-banner">
+  <div class="usa-accordion">
+    <header class="usa-banner-header">
+      <div class="usa-grid usa-banner-inner">
+        <img src="/pages-demo/assets/img/usa-flag.png" alt="U.S. flag">
+        <p>An official website of the United States government</p>
+        <button class="usa-accordion-button usa-banner-button"
+aria-expanded="false" aria-controls="gov-banner">
+          <!--span class="usa-banner-button-text">Here's how you know</span-->
+        </button>
+      </div>
+    </header>
+
+    <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+      <div class="usa-banner-guidance-gov usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img" src="/pages-demo/assets/img/icon-dot-gov.svg" alt="Dot gov">
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The .gov means it’s official.</strong>
+            <br>
+            Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
+          </p>
+        </div>
+      </div>
+
+      <div class="usa-banner-guidance-ssl usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img" src="/pages-demo/assets/img/icon-https.svg" alt="Https">
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The site is secure.</strong>
+            <br>
+            The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <header class="usa-header usa-header-extended" role="banner">
+
+  <div class="usa-navbar">
+
+    <div class="usa-logo" id="extended-logo">
+      <em class="usa-logo-text">
+        <a href="/pages-demo/"
+          title="Home"
+          aria-label="Home">
+          <img src="/pages-demo/assets/img/logo/cover.png" alt="GitHub Handbook" /> GitHub Handbook
+        </a>
+      </em>
+    </div>
+
+    <button class="usa-menu-btn">Menu</button>
+  </div>
+
+  <nav role="navigation" class="usa-nav">
+  <div class="usa-nav-inner">
+
+    <button class="usa-nav-close">
+      <img src="/pages-demo/assets/img/close.svg" alt="close">
+    </button>
+
+    <div class="usa-nav-secondary">
+      <ul class="usa-nav-primary usa-accordion">
+        
+        
+
+          
+          
+          <li class="testit">
+            <a title="Contact Us" class="usa-nav-link" href="/pages-demo/contact">
+              <span class="">Contact Us</span>
+            </a>
+          </li>
+          
+
+        
+
+          
+          
+
+          <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-2">
+              <span class="">Policies & Standards</span>
+            </button>
+            <ul id="extended-nav-section-2" class="usa-nav-submenu">
+              
+              <li>
+                <a title="Policies & Standards" href="/pages-demo/policies/access-policies">
+                  <span class="">Access Policies</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Policies & Standards" href="/pages-demo/policies/usage-policies">
+                  <span class="">Usage Policies</span>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
+          
+
+        
+
+          
+          
+
+          <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-3">
+              <span class="active">Getting Started</span>
+            </button>
+            <ul id="extended-nav-section-3" class="usa-nav-submenu">
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/guides/onboarding/getting-access">
+                  <span class="">Getting Access</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/videos">
+                  <span class="">Learn the basics</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/guides">
+                  <span class="">Guides</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/resources">
+                  <span class="">Resources</span>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
+          
+
+        
+
+          
+          
+          <li class="testit">
+            <a title="Announcements" class="usa-nav-link" href="/pages-demo/announcements">
+              <span class="">Announcements</span>
+            </a>
+          </li>
+          
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+</header>
+
+
+<div class="usa-overlay"></div>
+
+<section class="usa-section-dark pages-section">
+  <div class="usa-grid">
+
+    <div class="usa-width-one-full subpage-hero-text">
+
+      <h1>
+        GitHub Actions and CircleCI tool comparison
+      </h1>
+
+    </div>
+
+
+
+  </div>
+</section>
+
+
+<main class="usa-grid-full content-wrapper" id="main-content">
+
+  <div class="usa-width-full">
+
+
+
+  
+    <div class="usa-width-three-fourths usa-layout-docs-main_content">
+  
+
+
+  
+      <div class="page-intro">
+        You can find a range of tools to support the CI/CD process. GitHub Actions and CircleCI share several similarities in configuration, which makes migration to GitHub Actions relatively straightforward.
+      </div>
+  
+
+  <h2 id="github-actions-and-circleci-tool-comparison">GitHub Actions and CircleCI tool comparison</h2>
+
+<p>CircleCI and GitHub Actions both allow you to create workflows that automatically build, test, publish, release, and deploy code. CircleCI and GitHub Actions share some similarities in workflow configuration:</p>
+
+<ul>
+  <li>Workflow configuration files are written in YAML and stored in the repository.</li>
+  <li>Workflows include one or more jobs.</li>
+  <li>Jobs include one or more steps or individual commands.</li>
+  <li>Both CircleCI and GitHub Actions support running steps inside of a Docker image.</li>
+  <li>CircleCI and GitHub Actions support setting environment variables in the configuration file.</li>
+  <li>Steps or tasks can be reused and shared with the community. Both CircleCI and GitHub Actions provide a mechanism to reuse and share tasks in a workflow. CircleCI uses a concept called orbs, written in YAML, to provide tasks that people can reuse in a workflow.</li>
+</ul>
+
+<h3 id="some-key-differences-between-github-actions-and-circleci">Some key differences between GitHub Actions and CircleCI</h3>
+
+<ul>
+  <li>CircleCI’s automatic test parallelism automatically groups tests according to user-specified rules or historical timing information. This functionality is not built into GitHub Actions.</li>
+  <li>Actions that execute in Docker containers are sensitive to permissions problems since containers have a different mapping of users.
+    <ul>
+      <li>You can avoid many of these problems by not using the <code class="language-plaintext highlighter-rouge">USER</code> instruction in your <em>Dockerfile</em>.</li>
+      <li>CircleCI provides a set of pre-built images with common dependencies. These images have the <code class="language-plaintext highlighter-rouge">USER</code> set to <code class="language-plaintext highlighter-rouge">circleci</code>, which causes permissions to conflict with GitHub Actions.</li>
+      <li>We recommend that you move away from CircleCI’s pre-built images if you migrate to GitHub Actions. In many cases, you can use actions to install the additional dependencies you need.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="migrating-workflows-and-jobs">Migrating workflows and jobs</h3>
+
+<p>CircleCI defines <code class="language-plaintext highlighter-rouge">workflows</code> in the <em>config.yml</em> file, which allows you to configure more than one workflow. GitHub requires one workflow file per workflow, and as a consequence, does not require you to declare <code class="language-plaintext highlighter-rouge">workflows</code>. You’ll need to create a new workflow file for each workflow configured in config.yml.</p>
+
+<p>Both CircleCI and GitHub Actions configure <code class="language-plaintext highlighter-rouge">jobs</code> in the configuration file using similar syntax. If you configure any dependencies between jobs using <code class="language-plaintext highlighter-rouge">requires</code> in your CircleCI workflow, you can use the equivalent GitHub Actions <code class="language-plaintext highlighter-rouge">needs</code> syntax.</p>
+
+<h3 id="migrating-orbs-to-actions">Migrating orbs to actions</h3>
+
+<p>Both CircleCI and GitHub Actions provide a mechanism to reuse and share tasks in a workflow. CircleCI uses a concept called orbs, written in YAML, to provide tasks that people can reuse in a workflow. GitHub Actions has powerful and flexible reusable components called actions, which you build with either JavaScript files or Docker images.</p>
+
+<p>You can create actions by writing custom code that interacts with your repository in any way you’d like, including integrating with GitHub’s APIs and any publicly available third-party API. For example, an action can publish npm modules, send SMS alerts when urgent issues are created, or deploy production-ready code.</p>
+
+<p>CircleCI can reuse pieces of workflows with YAML anchors and aliases. GitHub Actions supports the most common need for reusability using build matrixes.</p>
+
+<h3 id="more-information">More information</h3>
+
+<p><a href="https://docs.github.com/en/actions/learn-github-actions/migrating-from-circleci-to-github-actions">Migrating from CircleCI to GitHub Actions</a></p>
+
+<p><a href="https://docs.github.com/en/actions/getting-started-with-github-actions/core-concepts-for-github-actions">Core Concepts for GitHub Actions</a></p>
+
+<p><a href="https://circleci.com/integrations/github/">CircleCI integration with GitHub</a></p>
+
+<p><a href="https://circleci.com/docs/">CircleCI Documentation</a></p>
+
+<hr />
+
+<p><a href="/pages-demo/guides">Return to Guides</a></p>
+
+
+  
+
+    </div>
+
+
+
+
+  </div>
+
+</main>
+
+
+<footer class="usa-footer usa-footer-medium" role="contentinfo">
+
+
+
+  <div class="usa-grid usa-footer-return-to-top">
+
+  
+
+    <a href="#">Return to top</a>
+    
+  
+
+  </div>
+
+
+
+  <div class="usa-footer-secondary_section">
+    <div class="usa-grid">
+      <div class="footer-half">
+        <ul class="usa-unstyled-list usa-nav-secondary-links">
+
+
+
+          <li><a title="Contact us" href="/pages-demo/contact">Contact</a></li>
+
+
+
+          <li><a title="Go to Privacy Policy" href="your-link-here" target="_blank">Privacy</a></li>
+
+
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script src="http://localhost:4000/pages-demo/assets/js/uswds.min.js"></script>
+
+</body>
+
+</html>

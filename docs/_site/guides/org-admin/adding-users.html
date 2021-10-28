@@ -1,0 +1,357 @@
+<!DOCTYPE html><!--[if lt IE 7 ]> <html lang="en-US" class="ie6"> <![endif]--><!--[if IE 7 ]> <html lang="en-US" class="ie7"> <![endif]--><!--[if IE 8 ]> <html lang="en-US" class="ie8"> <![endif]--><!--[if IE 9 ]> <html lang="en-US" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--><html lang="en-US"><!--<![endif]-->
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="GitHub Handbook" property="og:site_name">
+<meta content="website" property="og:type">
+
+<!-- Twitter Card -->
+<meta name="twitter:site" content="">
+<!-- description, title tags added below-->
+<meta name="twitter:image:src" content="http://localhost:4000/pages-demo/assets/img/logo/og-twitter-image.jpg' | relative_url }}">
+
+<meta name="twitter:card" content="summary">
+
+<!-- end Twitter Card -->
+
+<!-- Title -->
+
+<title>GitHub Handbook | Adding Users</title>
+<meta property="og:title" content="GitHub Handbook | Adding Users" />
+<meta name="twitter:title" content="GitHub Handbook | Adding Users">
+
+
+<!-- Description -->
+
+<meta name="description" content="Users can only be added to the organization on GitHub.com by requesting an invitation.">
+<meta property="og:description" content="Users can only be added to the organization on GitHub.com by requesting an invitation." />
+<meta property="twitter:description" content="Users can only be added to the organization on GitHub.com by requesting an invitation." />
+
+
+<!-- Image -->
+<link rel="image_src" href="">
+<meta name="image" content="">
+<meta property="og:image" content="" />
+
+<!--link rel="canonical" href="https://enyil.github.io/pages-demo/guides/org-admin/adding-users"-->
+
+<!-- Icons -->
+<link href="/pages-demo/assets/img/logo/apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-152x152.png" rel="apple-touch-icon-precomposed" sizes="144x144">
+
+<link rel="shortcut icon" href="/pages-demo/assets/img/logo/favicon.ico">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-16x16.png">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-96x96.png">
+
+<meta name="msapplication-TileImage" content="/pages-demo/assets/img/logo/apple-touch-icon-114x114.png">
+<meta name="msapplication-TileColor" content="#2b5797">
+
+<link rel="manifest" href="/pages-demo/manifest.json">
+<link rel="mask-icon" href="/pages-demo/assets/img/logo/safari-pinned-tab.svg" color="#2b5797"><!--red e21c3d-->
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="stylesheet" href="http://localhost:4000/pages-demo/assets/css/style.css">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+</head>
+
+<body class="layout-page page-adding-users site-lang-">
+
+  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+
+  <!--
+<div class="usa-banner hide-banner">
+  <div class="usa-accordion">
+    <header class="usa-banner-header">
+      <div class="usa-grid usa-banner-inner">
+        <img src="/pages-demo/assets/img/usa-flag.png" alt="U.S. flag">
+        <p>An official website of the United States government</p>
+        <button class="usa-accordion-button usa-banner-button"
+aria-expanded="false" aria-controls="gov-banner">
+          <!--span class="usa-banner-button-text">Here's how you know</span-->
+        </button>
+      </div>
+    </header>
+
+    <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+      <div class="usa-banner-guidance-gov usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img" src="/pages-demo/assets/img/icon-dot-gov.svg" alt="Dot gov">
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The .gov means it’s official.</strong>
+            <br>
+            Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
+          </p>
+        </div>
+      </div>
+
+      <div class="usa-banner-guidance-ssl usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img" src="/pages-demo/assets/img/icon-https.svg" alt="Https">
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The site is secure.</strong>
+            <br>
+            The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <header class="usa-header usa-header-extended" role="banner">
+
+  <div class="usa-navbar">
+
+    <div class="usa-logo" id="extended-logo">
+      <em class="usa-logo-text">
+        <a href="/pages-demo/"
+          title="Home"
+          aria-label="Home">
+          <img src="/pages-demo/assets/img/logo/cover.png" alt="GitHub Handbook" /> GitHub Handbook
+        </a>
+      </em>
+    </div>
+
+    <button class="usa-menu-btn">Menu</button>
+  </div>
+
+  <nav role="navigation" class="usa-nav">
+  <div class="usa-nav-inner">
+
+    <button class="usa-nav-close">
+      <img src="/pages-demo/assets/img/close.svg" alt="close">
+    </button>
+
+    <div class="usa-nav-secondary">
+      <ul class="usa-nav-primary usa-accordion">
+        
+        
+
+          
+          
+          <li class="testit">
+            <a title="Contact Us" class="usa-nav-link" href="/pages-demo/contact">
+              <span class="">Contact Us</span>
+            </a>
+          </li>
+          
+
+        
+
+          
+          
+
+          <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-2">
+              <span class="">Policies & Standards</span>
+            </button>
+            <ul id="extended-nav-section-2" class="usa-nav-submenu">
+              
+              <li>
+                <a title="Policies & Standards" href="/pages-demo/policies/access-policies">
+                  <span class="">Access Policies</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Policies & Standards" href="/pages-demo/policies/usage-policies">
+                  <span class="">Usage Policies</span>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
+          
+
+        
+
+          
+          
+
+          <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-3">
+              <span class="active">Getting Started</span>
+            </button>
+            <ul id="extended-nav-section-3" class="usa-nav-submenu">
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/guides/onboarding/getting-access">
+                  <span class="">Getting Access</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/videos">
+                  <span class="">Learn the basics</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/guides">
+                  <span class="">Guides</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/resources">
+                  <span class="">Resources</span>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
+          
+
+        
+
+          
+          
+          <li class="testit">
+            <a title="Announcements" class="usa-nav-link" href="/pages-demo/announcements">
+              <span class="">Announcements</span>
+            </a>
+          </li>
+          
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+</header>
+
+
+<div class="usa-overlay"></div>
+
+<section class="usa-section-dark pages-section">
+  <div class="usa-grid">
+
+    <div class="usa-width-two-thirds page-hero-text">
+
+      <h1>
+        Adding Users
+      </h1>
+
+    </div>
+
+
+    <div class="usa-width-one-third page-hero-image">
+
+      <img alt="" src="">
+
+    </div>
+
+
+  </div>
+</section>
+
+
+<main class="usa-grid-full content-wrapper" id="main-content">
+
+  <div class="usa-width-full">
+
+
+
+  
+    <div class="usa-width-three-fourths usa-layout-docs-main_content">
+  
+
+
+  
+      <div class="page-intro">
+        Users can only be added to the organization on GitHub.com by requesting an invitation.
+      </div>
+  
+
+  <h3 id="adding-users-through-people">Adding Users Through <em>People</em></h3>
+
+<p>Official documentation on inviting users can be found <a href="https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/inviting-users-to-join-your-organization">here</a>.</p>
+
+<ul>
+  <li>Open the <a href="org-link">org-name</a> organization</li>
+  <li>Navigate to <em>People</em><br />
+<img src="imgs/manage-users.1.png" alt="people location" /></li>
+  <li>Select <em>Invite member</em><br />
+<img src="imgs/invite-users.1.png" alt="invite members button location" /></li>
+  <li>Add the users email and click <em>Invite</em>  <br />
+<strong>Note:</strong> We do <em>NOT</em> invite users by GitHub Username due to the fact that typos can cause unwanted users to have access to the organization</li>
+</ul>
+
+<hr />
+
+<p><a href="/pages-demo/guides">Return to Guides</a></p>
+
+
+  
+
+    </div>
+
+
+
+
+  </div>
+
+</main>
+
+
+<footer class="usa-footer usa-footer-medium" role="contentinfo">
+
+
+
+  <div class="usa-grid usa-footer-return-to-top">
+
+  
+
+    <a href="#">Return to top</a>
+    
+  
+
+  </div>
+
+
+
+  <div class="usa-footer-secondary_section">
+    <div class="usa-grid">
+      <div class="footer-half">
+        <ul class="usa-unstyled-list usa-nav-secondary-links">
+
+
+
+          <li><a title="Contact us" href="/pages-demo/contact">Contact</a></li>
+
+
+
+          <li><a title="Go to Privacy Policy" href="your-link-here" target="_blank">Privacy</a></li>
+
+
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script src="http://localhost:4000/pages-demo/assets/js/uswds.min.js"></script>
+
+</body>
+
+</html>

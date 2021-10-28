@@ -1,0 +1,385 @@
+<!DOCTYPE html><!--[if lt IE 7 ]> <html lang="en-US" class="ie6"> <![endif]--><!--[if IE 7 ]> <html lang="en-US" class="ie7"> <![endif]--><!--[if IE 8 ]> <html lang="en-US" class="ie8"> <![endif]--><!--[if IE 9 ]> <html lang="en-US" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--><html lang="en-US"><!--<![endif]-->
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="GitHub Handbook" property="og:site_name">
+<meta content="website" property="og:type">
+
+<!-- Twitter Card -->
+<meta name="twitter:site" content="">
+<!-- description, title tags added below-->
+<meta name="twitter:image:src" content="http://localhost:4000/pages-demo/assets/img/logo/og-twitter-image.jpg' | relative_url }}">
+
+<meta name="twitter:card" content="summary">
+
+<!-- end Twitter Card -->
+
+<!-- Title -->
+
+<title>GitHub Handbook | Removing PII, PHI, and sensitive data</title>
+<meta property="og:title" content="GitHub Handbook | Removing PII, PHI, and sensitive data" />
+<meta name="twitter:title" content="GitHub Handbook | Removing PII, PHI, and sensitive data">
+
+
+<!-- Description -->
+
+<meta name="description" content="Git is a version control system that will save the entire history of changes to files.  When PII, PHI, or sensitive data is committed you will need to follow the steps below to scrub it from the git database.">
+<meta property="og:description" content="Git is a version control system that will save the entire history of changes to files.  When PII, PHI, or sensitive data is committed you will need to follow the steps below to scrub it from the git database." />
+<meta property="twitter:description" content="Git is a version control system that will save the entire history of changes to files.  When PII, PHI, or sensitive data is committed you will need to follow the steps below to scrub it from the git database." />
+
+
+<!-- Image -->
+<link rel="image_src" href="">
+<meta name="image" content="">
+<meta property="og:image" content="" />
+
+<!--link rel="canonical" href="https://enyil.github.io/pages-demo/guides/org-admin/removing-pii"-->
+
+<!-- Icons -->
+<link href="/pages-demo/assets/img/logo/apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-152x152.png" rel="apple-touch-icon-precomposed" sizes="144x144">
+
+<link rel="shortcut icon" href="/pages-demo/assets/img/logo/favicon.ico">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-16x16.png">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-96x96.png">
+
+<meta name="msapplication-TileImage" content="/pages-demo/assets/img/logo/apple-touch-icon-114x114.png">
+<meta name="msapplication-TileColor" content="#2b5797">
+
+<link rel="manifest" href="/pages-demo/manifest.json">
+<link rel="mask-icon" href="/pages-demo/assets/img/logo/safari-pinned-tab.svg" color="#2b5797"><!--red e21c3d-->
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="stylesheet" href="http://localhost:4000/pages-demo/assets/css/style.css">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+</head>
+
+<body class="layout-page page-removing-pii,-phi,-and-sensitive-data site-lang-">
+
+  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+
+  <!--
+<div class="usa-banner hide-banner">
+  <div class="usa-accordion">
+    <header class="usa-banner-header">
+      <div class="usa-grid usa-banner-inner">
+        <img src="/pages-demo/assets/img/usa-flag.png" alt="U.S. flag">
+        <p>An official website of the United States government</p>
+        <button class="usa-accordion-button usa-banner-button"
+aria-expanded="false" aria-controls="gov-banner">
+          <!--span class="usa-banner-button-text">Here's how you know</span-->
+        </button>
+      </div>
+    </header>
+
+    <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+      <div class="usa-banner-guidance-gov usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img" src="/pages-demo/assets/img/icon-dot-gov.svg" alt="Dot gov">
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The .gov means it’s official.</strong>
+            <br>
+            Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
+          </p>
+        </div>
+      </div>
+
+      <div class="usa-banner-guidance-ssl usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img" src="/pages-demo/assets/img/icon-https.svg" alt="Https">
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The site is secure.</strong>
+            <br>
+            The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <header class="usa-header usa-header-extended" role="banner">
+
+  <div class="usa-navbar">
+
+    <div class="usa-logo" id="extended-logo">
+      <em class="usa-logo-text">
+        <a href="/pages-demo/"
+          title="Home"
+          aria-label="Home">
+          <img src="/pages-demo/assets/img/logo/cover.png" alt="GitHub Handbook" /> GitHub Handbook
+        </a>
+      </em>
+    </div>
+
+    <button class="usa-menu-btn">Menu</button>
+  </div>
+
+  <nav role="navigation" class="usa-nav">
+  <div class="usa-nav-inner">
+
+    <button class="usa-nav-close">
+      <img src="/pages-demo/assets/img/close.svg" alt="close">
+    </button>
+
+    <div class="usa-nav-secondary">
+      <ul class="usa-nav-primary usa-accordion">
+        
+        
+
+          
+          
+          <li class="testit">
+            <a title="Contact Us" class="usa-nav-link" href="/pages-demo/contact">
+              <span class="">Contact Us</span>
+            </a>
+          </li>
+          
+
+        
+
+          
+          
+
+          <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-2">
+              <span class="">Policies & Standards</span>
+            </button>
+            <ul id="extended-nav-section-2" class="usa-nav-submenu">
+              
+              <li>
+                <a title="Policies & Standards" href="/pages-demo/policies/access-policies">
+                  <span class="">Access Policies</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Policies & Standards" href="/pages-demo/policies/usage-policies">
+                  <span class="">Usage Policies</span>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
+          
+
+        
+
+          
+          
+
+          <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-3">
+              <span class="active">Getting Started</span>
+            </button>
+            <ul id="extended-nav-section-3" class="usa-nav-submenu">
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/guides/onboarding/getting-access">
+                  <span class="">Getting Access</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/videos">
+                  <span class="">Learn the basics</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/guides">
+                  <span class="">Guides</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/resources">
+                  <span class="">Resources</span>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
+          
+
+        
+
+          
+          
+          <li class="testit">
+            <a title="Announcements" class="usa-nav-link" href="/pages-demo/announcements">
+              <span class="">Announcements</span>
+            </a>
+          </li>
+          
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+</header>
+
+
+<div class="usa-overlay"></div>
+
+<section class="usa-section-dark pages-section">
+  <div class="usa-grid">
+
+    <div class="usa-width-two-thirds page-hero-text">
+
+      <h1>
+        Removing PII, PHI, and sensitive data
+      </h1>
+
+    </div>
+
+
+    <div class="usa-width-one-third page-hero-image">
+
+      <img alt="" src="">
+
+    </div>
+
+
+  </div>
+</section>
+
+
+<main class="usa-grid-full content-wrapper" id="main-content">
+
+  <div class="usa-width-full">
+
+
+
+  
+    <div class="usa-width-three-fourths usa-layout-docs-main_content">
+  
+
+
+  
+      <div class="page-intro">
+        Git is a version control system that will save the entire history of changes to files.  When PII, PHI, or sensitive data is committed you will need to follow the steps below to scrub it from the git database.
+      </div>
+  
+
+  <p><em>Note</em>: Official documentation is located <a href="https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository">here</a>.</p>
+
+<h2 id="removing-pii-and-phi">Removing PII and PHI</h2>
+
+<p>Git is a version control system that stores the history of all changes in a repository.  If PII/PHI is checked in to a repository, it cannot simply be deleted since a record of the changes will still reside in the <code class="language-plaintext highlighter-rouge">.git</code> folder for every time that the file was changed.</p>
+
+<p>To fix this we will use a 3rd party open source tool called <a href="https://github.com/newren/git-filter-repo"><code class="language-plaintext highlighter-rouge">git filter-repo</code></a>.  Git has an inbuilt facility to fix these, <code class="language-plaintext highlighter-rouge">filter-branch</code>, but it is not performant and has some undesired side effects so to the point that the <a href="https://git-scm.com/docs/git-filter-branch#_warning">git maintainers suggest that it not be used.</a></p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<ul>
+  <li>Install <a href="https://github.com/newren/git-filter-repo/blob/main/INSTALL.md">git filter-repo</a></li>
+  <li>Determine if the file(s) are tracked by Git LFS
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">cat .gitattributes</code></li>
+      <li>If the file or file extension is in <code class="language-plaintext highlighter-rouge">.gitattributes</code> then it is tracked by Git LFS</li>
+      <li>Gather a list of the Git object id’s for each file you are removing
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">git ls-files -s path/to/file</code></li>
+          <li>This will return “[6 Digit permission] [41 Digit OID] [size of the file] [file name]”  you only need the 41 digit OID</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="how-to-remove-pii-and-phi">How to remove PII and PHI</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">git clone --mirror &lt;repo&gt; temp_name</code></li>
+  <li><code class="language-plaintext highlighter-rouge">cd temp_name</code></li>
+  <li><code class="language-plaintext highlighter-rouge">git filter-repo --path path/to/pii</code></li>
+  <li><code class="language-plaintext highlighter-rouge">git push --mirror https://url/to/repo</code></li>
+  <li>Contact <a href="https://support.github.com/contact">GitHub Support</a> or <a href="https://premium.githubsupport.com/">GitHub Premium Support</a>, asking them to remove cached views and references to the sensitive data in pull requests on GitHub.
+    <ul>
+      <li>If the file(s) are tracked in LFS provide the OID’s to customer support and ask them to remove them as well</li>
+    </ul>
+  </li>
+  <li>Finally make sure all users of the repository rebase branches instead of merging them.  If they do not do this the old tainted history will get re-added<br />
+<em>See the <a href="https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository">official docs</a> for more details</em></li>
+</ul>
+
+<hr />
+
+<p><a href="/pages-demo/guides">Return to Guides</a></p>
+
+
+  
+
+    </div>
+
+
+
+
+  </div>
+
+</main>
+
+
+<footer class="usa-footer usa-footer-medium" role="contentinfo">
+
+
+
+  <div class="usa-grid usa-footer-return-to-top">
+
+  
+
+    <a href="#">Return to top</a>
+    
+  
+
+  </div>
+
+
+
+  <div class="usa-footer-secondary_section">
+    <div class="usa-grid">
+      <div class="footer-half">
+        <ul class="usa-unstyled-list usa-nav-secondary-links">
+
+
+
+          <li><a title="Contact us" href="/pages-demo/contact">Contact</a></li>
+
+
+
+          <li><a title="Go to Privacy Policy" href="your-link-here" target="_blank">Privacy</a></li>
+
+
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script src="http://localhost:4000/pages-demo/assets/js/uswds.min.js"></script>
+
+</body>
+
+</html>

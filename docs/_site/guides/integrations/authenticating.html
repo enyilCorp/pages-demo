@@ -1,0 +1,495 @@
+<!DOCTYPE html><!--[if lt IE 7 ]> <html lang="en-US" class="ie6"> <![endif]--><!--[if IE 7 ]> <html lang="en-US" class="ie7"> <![endif]--><!--[if IE 8 ]> <html lang="en-US" class="ie8"> <![endif]--><!--[if IE 9 ]> <html lang="en-US" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--><html lang="en-US"><!--<![endif]-->
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="GitHub Handbook" property="og:site_name">
+<meta content="website" property="og:type">
+
+<!-- Twitter Card -->
+<meta name="twitter:site" content="">
+<!-- description, title tags added below-->
+<meta name="twitter:image:src" content="http://localhost:4000/pages-demo/assets/img/logo/og-twitter-image.jpg' | relative_url }}">
+
+<meta name="twitter:card" content="summary">
+
+<!-- end Twitter Card -->
+
+<!-- Title -->
+
+<title>GitHub Handbook | Authenticating Resources to GitHub</title>
+<meta property="og:title" content="GitHub Handbook | Authenticating Resources to GitHub" />
+<meta name="twitter:title" content="GitHub Handbook | Authenticating Resources to GitHub">
+
+
+<!-- Description -->
+
+<meta name="description" content="There are many types of authentication within GitHub aside from the normal single user login.  Here we cover what those authentication types are and when would the be useful.">
+<meta property="og:description" content="There are many types of authentication within GitHub aside from the normal single user login.  Here we cover what those authentication types are and when would the be useful." />
+<meta property="twitter:description" content="There are many types of authentication within GitHub aside from the normal single user login.  Here we cover what those authentication types are and when would the be useful." />
+
+
+<!-- Image -->
+<link rel="image_src" href="">
+<meta name="image" content="">
+<meta property="og:image" content="" />
+
+<!--link rel="canonical" href="https://enyil.github.io/pages-demo/guides/integrations/authenticating"-->
+
+<!-- Icons -->
+<link href="/pages-demo/assets/img/logo/apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114">
+<link href="/pages-demo/assets/img/logo/apple-touch-icon-152x152.png" rel="apple-touch-icon-precomposed" sizes="144x144">
+
+<link rel="shortcut icon" href="/pages-demo/assets/img/logo/favicon.ico">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-16x16.png">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" href="/pages-demo/assets/img/logo/favicon-96x96.png">
+
+<meta name="msapplication-TileImage" content="/pages-demo/assets/img/logo/apple-touch-icon-114x114.png">
+<meta name="msapplication-TileColor" content="#2b5797">
+
+<link rel="manifest" href="/pages-demo/manifest.json">
+<link rel="mask-icon" href="/pages-demo/assets/img/logo/safari-pinned-tab.svg" color="#2b5797"><!--red e21c3d-->
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="stylesheet" href="http://localhost:4000/pages-demo/assets/css/style.css">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+</head>
+
+<body class="layout-page page-authenticating-resources-to-github site-lang-">
+
+  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+
+  <!--
+<div class="usa-banner hide-banner">
+  <div class="usa-accordion">
+    <header class="usa-banner-header">
+      <div class="usa-grid usa-banner-inner">
+        <img src="/pages-demo/assets/img/usa-flag.png" alt="U.S. flag">
+        <p>An official website of the United States government</p>
+        <button class="usa-accordion-button usa-banner-button"
+aria-expanded="false" aria-controls="gov-banner">
+          <!--span class="usa-banner-button-text">Here's how you know</span-->
+        </button>
+      </div>
+    </header>
+
+    <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+      <div class="usa-banner-guidance-gov usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img" src="/pages-demo/assets/img/icon-dot-gov.svg" alt="Dot gov">
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The .gov means it’s official.</strong>
+            <br>
+            Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
+          </p>
+        </div>
+      </div>
+
+      <div class="usa-banner-guidance-ssl usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img" src="/pages-demo/assets/img/icon-https.svg" alt="Https">
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The site is secure.</strong>
+            <br>
+            The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <header class="usa-header usa-header-extended" role="banner">
+
+  <div class="usa-navbar">
+
+    <div class="usa-logo" id="extended-logo">
+      <em class="usa-logo-text">
+        <a href="/pages-demo/"
+          title="Home"
+          aria-label="Home">
+          <img src="/pages-demo/assets/img/logo/cover.png" alt="GitHub Handbook" /> GitHub Handbook
+        </a>
+      </em>
+    </div>
+
+    <button class="usa-menu-btn">Menu</button>
+  </div>
+
+  <nav role="navigation" class="usa-nav">
+  <div class="usa-nav-inner">
+
+    <button class="usa-nav-close">
+      <img src="/pages-demo/assets/img/close.svg" alt="close">
+    </button>
+
+    <div class="usa-nav-secondary">
+      <ul class="usa-nav-primary usa-accordion">
+        
+        
+
+          
+          
+          <li class="testit">
+            <a title="Contact Us" class="usa-nav-link" href="/pages-demo/contact">
+              <span class="">Contact Us</span>
+            </a>
+          </li>
+          
+
+        
+
+          
+          
+
+          <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-2">
+              <span class="">Policies & Standards</span>
+            </button>
+            <ul id="extended-nav-section-2" class="usa-nav-submenu">
+              
+              <li>
+                <a title="Policies & Standards" href="/pages-demo/policies/access-policies">
+                  <span class="">Access Policies</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Policies & Standards" href="/pages-demo/policies/usage-policies">
+                  <span class="">Usage Policies</span>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
+          
+
+        
+
+          
+          
+
+          <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-3">
+              <span class="active">Getting Started</span>
+            </button>
+            <ul id="extended-nav-section-3" class="usa-nav-submenu">
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/guides/onboarding/getting-access">
+                  <span class="">Getting Access</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/videos">
+                  <span class="">Learn the basics</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/guides">
+                  <span class="">Guides</span>
+                </a>
+              </li>
+              
+              <li>
+                <a title="Getting Started" href="/pages-demo/resources">
+                  <span class="">Resources</span>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
+          
+
+        
+
+          
+          
+          <li class="testit">
+            <a title="Announcements" class="usa-nav-link" href="/pages-demo/announcements">
+              <span class="">Announcements</span>
+            </a>
+          </li>
+          
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+</header>
+
+
+<div class="usa-overlay"></div>
+
+<section class="usa-section-dark pages-section">
+  <div class="usa-grid">
+
+    <div class="usa-width-one-full subpage-hero-text">
+
+      <h1>
+        Authenticating Resources to GitHub
+      </h1>
+
+    </div>
+
+
+
+  </div>
+</section>
+
+
+<main class="usa-grid-full content-wrapper" id="main-content">
+
+  <div class="usa-width-full">
+
+
+
+  
+    <div class="usa-width-three-fourths usa-layout-docs-main_content">
+  
+
+
+  
+      <div class="page-intro">
+        There are many types of authentication within GitHub aside from the normal single user login.  Here we cover what those authentication types are and when would the be useful.
+      </div>
+  
+
+  <h3 id="github-apps">GitHub Apps</h3>
+
+<p>GitHub Apps are first-class actors within GitHub. A GitHub App acts on its own behalf, taking actions via the API directly using its own identity, which means you don’t need to maintain a bot or service account as a separate user.</p>
+
+<p>GitHub Apps can be installed directly on organization and user accounts and granted access to specific repositories. They come with built-in webhooks and narrow, specific permissions.</p>
+
+<p>When you set up your GitHub App, you can select the repositories you want it to access. For example, you can set up an app called <code class="language-plaintext highlighter-rouge">MyGitHub</code> that writes issues in the <code class="language-plaintext highlighter-rouge">octocat</code> repository and only the <code class="language-plaintext highlighter-rouge">octocat</code> repository. To install a GitHub App, you must be an organization owner or have admin permissions in a repository.</p>
+
+<p>By default, only organization owners can manage the settings of GitHub Apps in an organization. To allow additional users to manage GitHub Apps in an organization, an owner can grant them <a href="https://docs.github.com/en/articles/permission-levels-for-an-organization/#github-app-managers">GitHub App manager</a> permissions.</p>
+
+<p>GitHub Apps are applications that need to be hosted somewhere. For step-by-step instructions that cover servers and hosting, see “<a href="https://docs.github.com/en/apps/building-your-first-github-app">Building Your First GitHub App</a>.”</p>
+
+<p>To improve your workflow, you can create a GitHub App that contains multiple scripts or an entire application, and then connect that app to many other tools. For example, you can connect GitHub Apps to GitHub, Slack, other in-house apps you may have, email programs, or other APIs.</p>
+
+<p>Keep these ideas in mind when creating GitHub Apps:</p>
+
+<ul>
+  <li>A user or organization can own up to 100 GitHub Apps.</li>
+  <li>A GitHub App should take actions independent of a user (unless the app is using a <a href="https://docs.github.com/en/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps#user-to-server-requests">user-to-server</a> token).
+    <ul>
+      <li>To keep user-to-server access tokens more secure, you can use access tokens that will expire after 8 hours, and a refresh token that can be exchanged for a new access token. For more information, see “<a href="https://docs.github.com/en/apps/building-github-apps/refreshing-user-to-server-access-tokens">Refreshing user-to-server access tokens</a>.”</li>
+    </ul>
+  </li>
+  <li>Make sure the GitHub App integrates with specific repositories.</li>
+  <li>The GitHub App should connect to a personal account or an organization.</li>
+  <li>Don’t expect the GitHub App to know and do everything a user can.</li>
+  <li>Don’t use a GitHub App if you just need a “Login with GitHub” service. But a GitHub App can use a <a href="https://docs.github.com/en/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps">user identification flow</a> to log users in and do other things.</li>
+  <li>Don’t build a GitHub App if you only want to act as a GitHub user and do everything that user can do.</li>
+  <li>If you are using your app with GitHub Actions and want to modify workflow files, you must authenticate on behalf of the user with an OAuth token that includes the workflow scope. The user must have admin or write permission to the repository that contains the workflow file. For more information, see “<a href="https://docs.github.com/en/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/#available-scopes">Understanding scopes for OAuth apps</a>.”</li>
+</ul>
+
+<p>To begin developing GitHub Apps, start with “<a href="https://docs.github.com/en/apps/building-github-apps/creating-a-github-app">Creating a GitHub App</a>.” To learn how to use GitHub App Manifests, which allow people to create preconfigured GitHub Apps, see “<a href="https://docs.github.com/en/apps/building-github-apps/creating-github-apps-from-a-manifest">Creating GitHub Apps from a manifest</a>.”</p>
+
+<h3 id="oauth-apps">OAuth Apps</h3>
+
+<p>OAuth2 is a protocol that lets external applications request authorization to private details in a user’s GitHub account without accessing their password. This is preferred over Basic Authentication because tokens can be limited to specific types of data and can be revoked by users at any time.</p>
+
+<blockquote>
+  <p><strong>Warning:</strong> Revoking all permissions from an OAuth App deletes any SSH keys the application generated on behalf of the user, including <a href="https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys">deploy keys</a>.</p>
+</blockquote>
+
+<p>An OAuth App uses GitHub as an identity provider to authenticate as the user who grants access to the app. This means when a user grants an OAuth App access, they grant permissions to all repositories they have access to in their account, including any organizations they belong to that haven’t blocked third-party access.</p>
+
+<p>Building an OAuth App is a good option if you are creating more complex processes than a simple script can handle. Note that OAuth Apps are applications that need to be hosted somewhere.</p>
+
+<p>Keep these ideas in mind when creating OAuth Apps:</p>
+
+<ul>
+  <li>A user or organization can own up to 100 OAuth apps.</li>
+  <li>An OAuth App should always act as the authenticated GitHub user across all of GitHub (for example, when providing user notifications).</li>
+  <li>An OAuth App can be used as an identity provider by enabling a “Login with GitHub” for the authenticated user.</li>
+  <li>Don’t build an OAuth App if you want your application to act on a single repository. With the repo OAuth scope, OAuth Apps can act on all the authenticated user’s repositories.</li>
+  <li>Don’t build an OAuth App to act as an application for your team or company. OAuth Apps authenticate as a single user, so if one person creates an OAuth App for a company to use, and then they leave the company, no one else will have access to it.</li>
+  <li>If you are using your OAuth App with GitHub Actions and want to modify workflow files, your OAuth token must have the workflow scope and the user must have owner or write permission to the repository that contains the workflow file. For more information, see “<a href="https://docs.github.com/en/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/#available-scopes">Understanding scopes for OAuth apps</a>.”</li>
+</ul>
+
+<blockquote>
+  <p>For more on OAuth Apps, see “<a href="https://docs.github.com/en/apps/building-oauth-apps/creating-an-oauth-app">Creating an OAuth App</a>” and “<a href="https://docs.github.com/en/rest/guides/basics-of-authentication#registering-your-app">Registering your app</a>.”</p>
+</blockquote>
+
+<h3 id="personal-access-tokens">Personal Access Tokens</h3>
+
+<p>A <a href="https://docs.github.com/en/articles/creating-a-personal-access-token-for-the-command-line">personal access token</a> is a string of characters that function similarly to an <a href="https://docs.github.com/en/apps/building-oauth-apps/authorizing-oauth-apps">OAuth token</a> where you can specify its <a href="https://docs.github.com/en/apps/building-oauth-apps/understanding-scopes-for-oauth-apps">scopes</a>.</p>
+
+<p>A personal access token is also similar to a password, but you can have many of them and you can revoke access to each one at any time.</p>
+
+<p>For example, you can enable a personal access token to write to your repositories. To run a cURL command or write a script that <a href="https://docs.github.com/en/rest/reference/issues#create-an-issue">creates an issue</a> in your repository, you would pass the personal access token to authenticate. You can store the personal access token as an environment variable to avoid typing it every time you use it.</p>
+
+<p>Keep these ideas in mind when using personal access tokens:</p>
+
+<ul>
+  <li>Remember to use this token to represent yourself only.</li>
+  <li>You can perform one-off cURL requests.</li>
+  <li>You can run personal scripts.</li>
+  <li>Don’t set up a script for your whole team or company to use.</li>
+  <li>Don’t set up a shared user account to act as a bot user.</li>
+</ul>
+
+<h3 id="deploy-keys">Deploy Keys</h3>
+
+<p>You can launch projects from a GitHub repository to your server by using a deploy key, which is an SSH key that grants access to a single repository. GitHub attaches the public part of the key directly to your repository instead of a personal user account, and the private part of the key remains on your server. For more information, see “<a href="https://docs.github.com/en/rest/guides/delivering-deployments">Delivering deployments</a>.”</p>
+
+<p>Deploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see “<a href="https://docs.github.com/en/articles/repository-permission-levels-for-an-organization">Repository permission levels for an organization</a>” and “<a href="https://docs.github.com/en/articles/permission-levels-for-a-user-account-repository">Permission levels for a user account repository</a>.”</p>
+
+<h4 id="pros-of-deploy-keys">Pros of Deploy Keys</h4>
+
+<ul>
+  <li>Anyone with access to the repository and server can deploy the project.</li>
+  <li>Users don’t have to change their local SSH settings.</li>
+  <li>Deploy keys are read-only by default, but you can give them write access when adding them to a repository.</li>
+</ul>
+
+<h4 id="cons-of-deploy-keys">Cons of Deploy Keys</h4>
+
+<ul>
+  <li>Deploy keys only grant access to a single repository. More complex projects may have many repositories to pull to the same server.</li>
+  <li>Deploy keys are usually not protected by a passphrase, making the key easily accessible if the server is compromised.</li>
+</ul>
+
+<blockquote>
+  <p>For more information on how to setup and use these, please see our documentation on “<a href="https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys">Deploy Keys</a>.”</p>
+</blockquote>
+
+<h3 id="machine-users">Machine users</h3>
+
+<p>If your server needs to access multiple repositories, you can create a new GitHub account and attach an SSH key that will be used exclusively for automation. Since this GitHub account won’t be used by a human, it’s called a machine user.</p>
+
+<p>You can add the machine user as:</p>
+
+<ul>
+  <li>A <a href="https://docs.github.com/en/articles/inviting-collaborators-to-a-personal-repository">collaborator</a> on a personal repository (granting read and write access)</li>
+  <li>an <a href="https://docs.github.com/en/articles/adding-outside-collaborators-to-repositories-in-your-organization">outside collaborator</a> on an organization repository (granting read, write, or admin access)</li>
+  <li>a <a href="https://docs.github.com/en/articles/adding-organization-members-to-a-team">team</a> with access to the repositories it needs to automate (granting the permissions of the team).</li>
+</ul>
+
+<blockquote>
+  <p>Tip: Our <a href="https://docs.github.com/en/articles/github-terms-of-service">terms of service</a> state:</p>
+  <blockquote>
+    <p>Accounts registered by “bots” or other automated methods are not permitted.</p>
+  </blockquote>
+
+  <p>This means that you cannot automate the creation of accounts. But if you want to create a single machine user for automating tasks such as deploy scripts in your project or organization, that is totally cool.</p>
+</blockquote>
+
+<h4 id="pros-of-a-machine-user">Pros of a Machine User</h4>
+
+<ul>
+  <li>Anyone with access to the repository and server can deploy the project.</li>
+  <li>No (human) users need to change their local SSH settings.</li>
+  <li>Multiple keys are not needed; one per server is adequate.</li>
+</ul>
+
+<h4 id="cons-of-a-machine-user">Cons of a Machine User</h4>
+
+<ul>
+  <li>Only organizations can restrict machine users to read-only access. Personal repositories always grant collaborators read/write access.</li>
+  <li>Machine user keys, like deploy keys, are usually not protected by a passphrase.</li>
+</ul>
+
+<blockquote>
+  <p>For more information on how to setup and use these, please see our documentation on “<a href="https://docs.github.com/en/developers/overview/managing-deploy-keys#machine-users">Machine users</a>.”</p>
+</blockquote>
+
+<h2 id="which-should-you-use">Which should you use?</h2>
+
+<p>Before you get started creating integrations, you need to determine the best way to access, authenticate, and interact with the GitHub APIs. The following image offers some questions to ask yourself when deciding whether to use personal access tokens, GitHub Apps, or OAuth Apps for your integration.</p>
+
+<p><img src="https://docs.github.com/assets/images/intro-to-apps-flow.png" alt="Authentication Decision Tree" /></p>
+
+<p>Consider these questions about how your integration needs to behave and what it needs to access:</p>
+
+<ul>
+  <li>Will my integration act only as me, or will it act more like an application?</li>
+  <li>Do I want it to act independently of me as its own entity?</li>
+  <li>Will it access everything that I can access, or do I want to limit its access?</li>
+  <li>Is it simple or complex? For example, personal access tokens are good for simple scripts and cURLs, whereas an OAuth App can handle more complex scripting.</li>
+</ul>
+
+<hr />
+
+<p><a href="/pages-demo/guides">Return to Guides</a></p>
+
+
+  
+
+    </div>
+
+
+
+
+  </div>
+
+</main>
+
+
+<footer class="usa-footer usa-footer-medium" role="contentinfo">
+
+
+
+  <div class="usa-grid usa-footer-return-to-top">
+
+  
+
+    <a href="#">Return to top</a>
+    
+  
+
+  </div>
+
+
+
+  <div class="usa-footer-secondary_section">
+    <div class="usa-grid">
+      <div class="footer-half">
+        <ul class="usa-unstyled-list usa-nav-secondary-links">
+
+
+
+          <li><a title="Contact us" href="/pages-demo/contact">Contact</a></li>
+
+
+
+          <li><a title="Go to Privacy Policy" href="your-link-here" target="_blank">Privacy</a></li>
+
+
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script src="http://localhost:4000/pages-demo/assets/js/uswds.min.js"></script>
+
+</body>
+
+</html>
