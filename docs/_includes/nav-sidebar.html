@@ -1,0 +1,63 @@
+<nav class="usa-accordion sidebar-accordion">
+
+  <ul class="usa-sidenav-list">
+
+{% for navitem in site.data.navigation %}
+
+  {% if (navitem.subitems and navitem.linkto == include.data) %}
+
+    {% for subitem in navitem.subitems %}
+
+      {% if subitem.tertitems %}
+
+{% comment %}
+Global nav needs "index.html" to avoid problem where https is stripped when there are tertiary items with the result that the the page is blocked by the network. But to make subnav selected states work correctly for tertiary pages, need to remove "index.html." So...remove "index.html" from subitem.linkto and assign it to "newlinkto."
+{% endcomment %}
+
+{% if subitem.linkto contains "index.html" %}
+{% assign newlinkto = subitem.linkto | remove: "index.html" %}
+{% endif %}
+      <li class="sidebar-button{% if page.url contains newlinkto %} accordion-current{% endif %}">
+
+        <button class="usa-accordion-button"
+          aria-expanded="{% if page.url contains newlinkto %}true{% endif %}"
+          aria-controls="{{subitem.linkto}}">
+          {{subitem.title}}
+        </button>
+
+        <div id="{{subitem.linkto}}" class="usa-accordion-content">
+
+          <ul class="usa-sidenav-sub_list">
+          {% for tertitem in subitem.tertitems %}
+            <li>
+              <a title="{{tertitem.alt}}" href="{{site.baseurl}}{{tertitem.linkto}}" class="{% if page.url contains tertitem.linkto %}level-2-current{% endif %}">{{tertitem.title}}</a>
+            </li>
+          {% endfor %}
+          </ul>
+
+        </div>
+
+      </li>
+
+      {% else %}
+
+      <li>
+
+        <a title="{{subitem.alt}}"
+        {% if subitem.target == true %}href="{{subitem.linkto}}"{% else %} href="{{site.baseurl}}{{subitem.linkto}}"{% endif %}{% if subitem.target == true %} target="_blank" {% endif %} class="{% if page.url contains subitem.linkto %}level-1-current{% endif %}">
+          {{subitem.title}}
+        </a>
+
+      </li>
+
+      {% endif %}
+
+    {% endfor %}
+
+  {% endif %}
+
+{% endfor %}
+
+  </ul>
+
+</nav>

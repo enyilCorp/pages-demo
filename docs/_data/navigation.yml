@@ -1,0 +1,52 @@
+# Navigation menu
+#
+# show-subitems AND show-tertitems appear in sidebar (not main navigation)
+#
+---
+- title: Contact Us
+  linkto: /contact
+  alt: Contact Us
+  show-subitems: yes
+
+- title: Policies & Standards
+  linkto: /policies
+  target: yes
+  alt: Policies & Standards
+  show-subitems: yes
+  subitems:
+    - title: Access Policies
+      linkto: /policies/access-policies
+      target: no
+      alt: Access Policies
+    - title: Usage Policies
+      linkto: /policies/usage-policies
+      target: no
+      alt: Usage Policies
+
+- title: Getting Started
+  linkto: /guides
+  alt: Getting Started
+  show-subitems: yes
+  subitems:
+    - title: Getting Access
+      linkto: /guides/onboarding/getting-access
+      target: no
+      alt: Getting Access
+    - title: Learn the basics
+      linkto: /videos
+      target: no
+      alt: Getting Started with Git and GitHub
+    - title: Guides
+      linkto: /guides
+      target: no
+      alt: Guides
+    - title: Resources
+      linkto: /resources
+      target: no
+      alt: Helpful Resources
+
+- title: Announcements
+  alt: Announcements
+  linkto: /announcements
+  target: no
+  show-subitems: no

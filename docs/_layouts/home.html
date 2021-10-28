@@ -1,0 +1,117 @@
+---
+layout: base
+#
+# site.title + site.tagline in header are defined in config.yml
+#
+---
+
+<main id="main-content">
+
+  <section class="usa-hero handbook-hero">
+    <div class="usa-grid">
+      <div class="usa-hero-callout usa-section-dark">
+        <h1>
+            <span class="usa-hero-callout-alt">{{ site.title }}</span>
+        </h1>
+
+        <p>{{ site.tagline }}</p>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="post">
+    <div>
+     <p>Announcements:</p>
+    {% for post in site.posts limit:2 %}
+    <p>
+      <ul>
+        <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </ul>
+    </p>
+    {% endfor %}
+    </div>
+  </section>
+
+  <section class="usa-section home-section">
+    <div class="usa-grid home-block-container">
+
+      <div class="home-block">
+        <img class ="icon" alt="{{ page.section-1-alt }}" src="{{ page.section-1-image }}">
+
+        <h2>
+          <a title="{{ page.section-1-alt }}" href="{{ page.section-1-link | relative_url }}"{%if page.section-1-target == true%} target="_blank"{% endif %}>{{ page.section-1-title }}</a>
+        </h2>
+
+        <p>{{ page.section-1-copy }}</p>
+      </div>
+
+      <div class="home-block">
+        <img class ="icon" alt="{{ page.section-2-alt }}" src="{{ page.section-2-image }}">
+
+        <h2>
+          <a title="{{ page.section-2-alt }}" href="{{ page.section-2-link | relative_url }}"{%if page.section-2-target == true%} target="_blank"{% endif %}>{{ page.section-2-title }}</a>
+        </h2>
+
+        <p>{{ page.section-2-copy }}</p>
+      </div>
+
+      <div class="home-block">
+        <img class ="icon" alt="{{ page.section-3-alt }}" src="{{ page.section-3-image }}">
+
+        <h2>
+          <a title="{{ page.section-3-alt }}" href="{{ page.section-3-link | relative_url }}"{%if page.section-3-target == true%} target="_blank"{% endif %}>{{ page.section-3-title }}</a>
+        </h2>
+
+        <p>{{ page.section-3-copy }}</p>
+      </div>
+
+      <div class="home-block">
+        <img class ="icon" alt="{{ page.section-4-alt }}" src="{{ page.section-4-image }}">
+
+        <h2>
+          <a title="{{ page.section-4-alt }}" href="{{ page.section-4-link | relative_url }}"{%if page.section-4-target == true%} target="_blank"{% endif %}>{{ page.section-4-title }}</a>
+        </h2>
+
+        <p>{{ page.section-4-copy }}</p>
+      </div>
+
+      <div class="home-block">
+        <img class ="icon" alt="{{ page.section-5-alt }}" src="{{ page.section-5-image }}">
+
+        <h2>
+          <a title="{{ page.section-5-alt }}" href="{{ page.section-5-link | relative_url }}"{%if page.section-5-target == true%} target="_blank"{% endif %}>{{ page.section-5-title }}</a>
+        </h2>
+
+        <p>{{ page.section-5-copy }}</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="usa-section home-secondary">
+    <div class="usa-grid">
+
+      <div class="usa-width-one-third">
+        <h3>{{ page.subhead }}</h3>
+      </div>
+
+      <div class="usa-width-four-thirds"></br>
+        <p>{{ page.p1 }}</p>
+
+        <p>{{ page.p2 }}</p>
+
+        <div class="usa-alert usa-alert-info" >
+          <div class="usa-alert-body">
+            <h4 class="usa-alert-heading">{{ page.alert-title}}</h4>
+            <p class="usa-alert-text">{{ page.alert-copy }}</p>           
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>

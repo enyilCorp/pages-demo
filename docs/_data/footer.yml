@@ -1,0 +1,10 @@
+# Footer menu
+---
+- title: Contact
+  linkto: contact
+  alt: Contact us
+
+- title: Privacy
+  linkto: your-link-here
+  alt: Go to Privacy Policy
+  target: yes

@@ -1,0 +1,93 @@
+# ----------------------------------
+# TABLE OF CONTENTS
+#
+# 1. Site Settings - Controls the content that appears in the html metadata Title and Description attributes for site pages. The title attribute is used as the first part of the browser page title, i.e., "GitHub Handbook - Page Title Here"
+#
+# 2. Ignore Everything Below This Line - content that follows control Jekyll and Github. Content Writers and Editors can ignore all of this.
+#
+# ----------------------------------
+
+# 1. Site Settings
+title: GitHub Handbook
+
+title_short: GitHub Handbook
+
+description: The GitHub Handbook helps an organization's users by providing a collection of guides and policies to help teams with work, including onboarding and how to use GitHub.
+
+tagline: Helping teams get started with GitHub and the <a title="Policies & Standards" href="policies">Policies & Standards</a> for using GitHub your organization.
+
+contact-handbook:
+  name: services@github.com
+  email: services.github.com
+
+org: 
+  name: org-name
+  link: org-link
+
+support:
+  team-name: support-team-name
+  team-handle: support-handle
+  email: support-email
+  issue-link: support-issues
+
+slack: 
+  workspace-name: slack-workspace-name
+  workspace-link: slack-workspace-link
+  channel-name: slack-channel-name
+  channel-link: slack-channel-link
+
+
+# ----------------------------------
+# 2. IGNORE EVERYTHING BELOW THIS LINE
+# ----------------------------------
+
+# Navigation Menu
+nav:
+  menu-button: Menu
+  skip_nav: Skip to main content
+
+
+# Additional Site Settings
+#image: /assets/img/logo/og-image.jpg
+canonical_domain: githubtraining.github.io
+url: https://githubtraining.github.io/
+baseurl: /github-handbook-template
+
+# Pages
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+# Build settings
+kramdown:
+  hard_wrap: true
+
+# Defaults
+defaults:
+- scope:
+    path: ""
+  values:
+    layout: base
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - node_modules
+  - LICENSE
+  - CONTRIBUTING
+  - README
+  - vendor
+
+sass:
+    # Either :compressed or :expanded
+    style: :compressed
+    # Where you keep your scss files
+    sass_dir: _sass
+    # Where sass should look for other scss
+    #load_paths:
+      #- node_modules/uswds/src/stylesheets
+      #- _sass/_variables.scss
+      #- _sass/_main.scss

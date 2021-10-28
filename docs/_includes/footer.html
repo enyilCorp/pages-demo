@@ -1,0 +1,36 @@
+<footer class="usa-footer usa-footer-medium" role="contentinfo">
+
+{% if page.title != "Welcome" %}
+
+  <div class="usa-grid usa-footer-return-to-top">
+
+  {% if page.return-top == true %}
+
+    <a href="#">Return to top</a>
+    
+  {% else %}
+
+    
+  {% endif %}
+
+  </div>
+
+{% endif %}
+
+  <div class="usa-footer-secondary_section">
+    <div class="usa-grid">
+      <div class="footer-half">
+        <ul class="usa-unstyled-list usa-nav-secondary-links">
+
+{% for item in site.data.footer %}
+{% if item.title != "Help" %}
+          <li><a title="{{ item.alt }}" {% if item.target %}href="{{ item.linkto}}"{% else %}href="{{ item.linkto | relative_url }}"{% endif %}{% if item.target == true %} target="_blank"{% endif %}>{{ item.title }}</a></li>
+{% endif %}
+{% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
