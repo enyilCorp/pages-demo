@@ -51,7 +51,7 @@ nav:
 #image: /assets/img/logo/og-image.jpg
 canonical_domain: githubtraining.github.io
 url: https://githubtraining.github.io/
-baseurl: /github-handbook-template
+baseurl: /pages-demo
 
 # Pages
 collections:
