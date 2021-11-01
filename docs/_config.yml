@@ -50,7 +50,7 @@ nav:
 # Additional Site Settings
 #image: /assets/img/logo/og-image.jpg
 canonical_domain: enyil.github.io
-url: https://enyil.github.io/
+url: https://enyil.github.io
 baseurl: /pages-demo
 
 # Pages
