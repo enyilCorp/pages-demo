@@ -4,7 +4,7 @@
 
 The `pages` site is driven by [Jekyll static site](https://jekyllrb.com/).
 
-GitHub `pages` sites can be `private` or `public` in github.com. However, the repository behind those pages sites can be `private` or `internal` (if hosted in an organization) which restricts the users that have `write-access` to those that have explicit permission.
+The GitHub `pages` sites can be `private` or `public` in github.com. However, the repository behind those pages sites can be `private` or `internal` (if hosted in an organization) which restricts the users that have `write-access` to those that have explicit permission.
 
 ## Contributing as a member of the repository
 
